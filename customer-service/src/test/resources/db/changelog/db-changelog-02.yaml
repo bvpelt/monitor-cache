@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: loadData
+      author: bart van pelt
+      changes:
+        - loadData:
+            columns:
+              - column:
+                  name: policy
+                  type: text
+              - column:
+                  name: claim
+                  type: text
+            file: db/changelog/customers.csv
+            tableName: customer
+            separator: ;
+            usePreparedStatements: true

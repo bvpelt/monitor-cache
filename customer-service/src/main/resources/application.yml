@@ -1,0 +1,63 @@
+server:
+  port: 8085
+
+tracing:
+  url: http://localhost:4318/v1/traces
+
+nl:
+  bsoft:
+    insuranceurl: http://localhost:8090/
+    informurl: http://localhost:8087/inform/
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  info:
+    env:
+      enabled: true
+  server:
+    port: 8086
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      path-mapping:
+        info: app-info
+        health: app-health
+      exposure:
+        include: '*'
+        exclude:
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    nl:
+      bsoft: DEBUG
+
+spring:
+  application:
+    name: customer-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: 'jdbc:postgresql://localhost/monitor'
+    username: testuser
+    password: 12345
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
+  jpa:
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false

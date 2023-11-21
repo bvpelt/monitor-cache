@@ -9,13 +9,24 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>nl.boft</groupId>
+    <groupId>nl.bsoft</groupId>
     <artifactId>monitorcache</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>monitorcache</name>
     <description>Demo project for Spring Boot</description>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <type>pom</type>
+                <version>3.1.5</version>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <reporting>
         <plugins>

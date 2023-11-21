@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>nl.boft</groupId>
+        <groupId>nl.bsoft</groupId>
         <artifactId>monitorcache</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
@@ -46,6 +46,13 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+
+        <!-- apps -->
+        <dependency>
+            <groupId>nl.bsoft</groupId>
+            <artifactId>insurance-service</artifactId>
+            <version>${project.version}</version>
         </dependency>
 
         <!-- code generation -->

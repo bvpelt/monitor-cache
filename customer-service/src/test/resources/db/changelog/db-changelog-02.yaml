@@ -6,11 +6,14 @@ databaseChangeLog:
         - loadData:
             columns:
               - column:
-                  name: policy
-                  type: text
+                  name: customerid
+                  type: int
               - column:
-                  name: claim
-                  type: text
+                  name: policyid
+                  type: int
+              - column:
+                  name: claimid
+                  type: int
             file: db/changelog/customers.csv
             tableName: customer
             separator: ;

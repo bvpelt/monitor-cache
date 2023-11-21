@@ -1,0 +1,37 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: bart
+      changes:
+        - createTable:
+            tableName: policy
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: policytext
+                  type: text
+  - changeSet:
+      id: 2
+      author: bart
+      changes:
+        - createTable:
+            tableName: claim
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: claimtext
+                  type: text
+
+

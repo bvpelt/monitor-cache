@@ -1,3 +1,11 @@
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:
+    nl:
+      bsoft: DEBUG
+
 server:
   port: 8085
 
@@ -8,6 +16,11 @@ nl:
   bsoft:
     insuranceurl: http://localhost:8090/
     informurl: http://localhost:8087/inform/
+    monitortest:
+      customerservice:
+        defaultCacheTime: 60
+        itemCacheTime: 10
+        customerCacheTime: 60
 
 management:
   tracing:
@@ -34,12 +47,7 @@ management:
         include: '*'
         exclude:
 
-logging:
-  pattern:
-    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
-  level:
-    nl:
-      bsoft: DEBUG
+
 
 spring:
   application:

@@ -4,7 +4,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import nl.bsoft.monitortest.customerservice.config.RedisConfig;
 import nl.bsoft.monitortest.customerservice.controller.CustomerController;
-import nl.bsoft.monitortest.customerservice.model.Customer;
+import nl.bsoft.monitortest.customerservice.model.CustomerDTO;
 import nl.bsoft.monitortest.customerservice.repositories.CustomerRepository;
 import nl.bsoft.monitortest.customerservice.service.CustomerService;
 import org.junit.jupiter.api.Test;
@@ -40,8 +40,8 @@ import static org.mockito.Mockito.verify;
 class ItemServiceCachingIntegrationTest {
 
     private static final Integer AN_ID = 1;
-    private static final String AN_POLICY = "policy";
-    private static final String AN_CLAIM = "claim";
+    private static final Integer AN_POLICY = 2;
+    private static final Integer AN_CLAIM = 3;
     @MockBean
     private CustomerRepository mockCustomerRepository;
     @Autowired
@@ -51,12 +51,12 @@ class ItemServiceCachingIntegrationTest {
 
     @Test
     void givenRedisCaching_whenFindItemById_thenItemReturnedFromCache() {
-        Customer anItem = new Customer(AN_ID, AN_POLICY, AN_CLAIM);
+        CustomerDTO anItem = new CustomerDTO(AN_ID, AN_POLICY, AN_CLAIM);
         given(mockCustomerRepository.findById(AN_ID))
                 .willReturn(Optional.of(anItem));
 
-        Customer itemCacheMiss = customerService.getItemForId(AN_ID);
-        Customer itemCacheHit = customerService.getItemForId(AN_ID);
+        CustomerDTO itemCacheMiss = customerService.getCustomerDTOForId(AN_ID);
+        CustomerDTO itemCacheHit = customerService.getCustomerDTOForId(AN_ID);
 
         assertThat(itemCacheMiss).isEqualTo(anItem);
         assertThat(itemCacheHit).isEqualTo(anItem);
@@ -66,7 +66,7 @@ class ItemServiceCachingIntegrationTest {
     }
 
     private Object itemFromCache() {
-        return cacheManager.getCache("itemCache").get(AN_ID).get();
+        return cacheManager.getCache("custCache").get(AN_ID).get();
     }
 
     @TestConfiguration

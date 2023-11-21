@@ -14,9 +14,9 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: policy
-                  type: text
+                  name: policyid
+                  type: int
               - column:
-                  name: claim
-                  type: text
+                  name: claimid
+                  type: int
 

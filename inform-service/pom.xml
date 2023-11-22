@@ -4,12 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>nl.bsoft</groupId>
+        <groupId>nl.bsoft.monitor</groupId>
         <artifactId>monitorcache</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>inform-service</artifactId>
+    <packaging>jar</packaging>
     <name>inform-service</name>
     <description>inform-service</description>
 

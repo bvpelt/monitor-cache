@@ -1,15 +1,17 @@
 package nl.bsoft.monitoring.insuranceservice.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+
 @Entity
-@Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 @Table(name="policy")
 public class Policy implements Serializable {
 

@@ -35,7 +35,8 @@ nl:
     monitortest:
       customerservice:
         defaultCacheTime: 60
-        itemCacheTime: 10
+        policyCacheTime: 10
+        claimCacheTime: 10
         customerCacheTime: 60
 
 server:
@@ -44,11 +45,28 @@ server:
 spring:
   application:
     name: insurance-service
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 10000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-wait: -1ms
+          max-idle: 8
+          min-idle: 8
   datasource:
     driver-class-name: org.postgresql.Driver
     url: 'jdbc:postgresql://localhost/monitor'
     username: testuser
     password: 12345
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+      FAIL_ON_EMPTY_BEANS: false
+    deserialization:
+      unwrap-root-value: false
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.yaml
     enabled: true
@@ -57,10 +75,17 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: none
     show-sql: true
     open-in-view: false
+
+  cache:
+    type: redis
+    redis:
+      time-to-live: 30
+      cache-null-values: false
 
 tracing:
   url: http://localhost:4318/v1/traces

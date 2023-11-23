@@ -15,17 +15,16 @@ import java.util.List;
 public class PolicyController {
 
     private final PolicyService policyService;
+    @Value("${spring.application.name}")
+    private String applicationName;
 
     @Autowired
     PolicyController(PolicyService policyService) {
         this.policyService = policyService;
     }
-    @Value("${spring.application.name}")
-    private String applicationName;
 
-
-    @GetMapping("/policy/")
-    public List<Policy> getAllPolicies()  throws Exception {
+    @GetMapping("/policy")
+    public List<Policy> getAllPolicies() throws Exception {
         log.info("Incoming request at {} for request get all policoes", applicationName);
         return this.policyService.getAll();
     }

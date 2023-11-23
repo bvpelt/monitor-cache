@@ -1,0 +1,16 @@
+GET http://localhost:8090/policy
+Content-Type: application/json
+
+{
+  "policyText": "added policy"
+}
+
+###
+GET http://localhost:8090/policy/1
+Accept: application/json
+
+###
+GET http://localhost:8090/policy
+Accept: application/json
+
+###

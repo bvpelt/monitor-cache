@@ -4,6 +4,9 @@ logging:
   level:
     nl:
       bsoft: DEBUG
+    logging:
+      level:
+        web: DEBUG
 
 management:
   tracing:

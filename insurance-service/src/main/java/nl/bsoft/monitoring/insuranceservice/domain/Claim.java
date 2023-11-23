@@ -1,8 +1,9 @@
 package nl.bsoft.monitoring.insuranceservice.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.data.redis.core.RedisHash;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,7 +13,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="claim")
+@Table(name = "claim")
 public class Claim implements Serializable {
     private static final long serialVersionUID = 2L;
 
@@ -20,6 +21,7 @@ public class Claim implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "claimtext")
     private String claimText;
 
     @Override

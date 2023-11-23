@@ -1,8 +1,9 @@
 package nl.bsoft.monitoring.insuranceservice.domain;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.springframework.data.redis.core.RedisHash;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,7 +13,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name="policy")
+@Table(name = "policy")
 public class Policy implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,6 +22,7 @@ public class Policy implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "policytext")
     private String policyText;
 
     @Override

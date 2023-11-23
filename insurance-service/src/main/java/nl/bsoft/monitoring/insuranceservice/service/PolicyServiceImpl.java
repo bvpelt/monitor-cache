@@ -1,12 +1,8 @@
 package nl.bsoft.monitoring.insuranceservice.service;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.bsoft.monitoring.insuranceservice.domain.Claim;
 import nl.bsoft.monitoring.insuranceservice.domain.Policy;
-import nl.bsoft.monitoring.insuranceservice.repositories.ClaimRepository;
 import nl.bsoft.monitoring.insuranceservice.repositories.PolicyRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -14,12 +10,13 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
+import java.util.Optional;
+
 @Slf4j
 @Service
 @CacheConfig(cacheNames = "policyCache")
-public class PolicyServiceImpl implements PolicyService{
+public class PolicyServiceImpl implements PolicyService {
 
     @Autowired
     private PolicyRepository policyRepository;
@@ -27,13 +24,14 @@ public class PolicyServiceImpl implements PolicyService{
     @Cacheable(cacheNames = "policies")
     @Override
     public List<Policy> getAll() {
-        waitSomeTime("getAll");
+        waitSomeTime(3000,"getAll");
         return this.policyRepository.findAll();
     }
 
     @CacheEvict(cacheNames = "policies", allEntries = true)
     @Override
     public Policy add(Policy policy) {
+        waitSomeTime(1000,"Add");
         return this.policyRepository.save(policy);
     }
 
@@ -49,8 +47,8 @@ public class PolicyServiceImpl implements PolicyService{
         return this.policyRepository.save(repPolicy);
     }
 
-    @Caching(evict = { @CacheEvict(cacheNames = "policy", key = "#id"),
-            @CacheEvict(cacheNames = "policies", allEntries = true) })
+    @Caching(evict = {@CacheEvict(cacheNames = "policy", key = "#id"),
+            @CacheEvict(cacheNames = "policies", allEntries = true)})
     @Override
     public void delete(long id) {
         this.policyRepository.deleteById(id);
@@ -59,14 +57,14 @@ public class PolicyServiceImpl implements PolicyService{
     @Cacheable(cacheNames = "policy", key = "#id", unless = "#result == null")
     @Override
     public Policy getPolicyById(long id) {
-        waitSomeTime("getPolicyById");
+        waitSomeTime(3000,"getPolicyById");
         return this.policyRepository.findById(id).orElse(null);
     }
 
-    private void waitSomeTime(String stage) {
+    private void waitSomeTime(long interval , String stage) {
         log.info("Long Wait Begin for {}", stage);
         try {
-            Thread.sleep(3000);
+            Thread.sleep(interval);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

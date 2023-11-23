@@ -28,6 +28,6 @@ databaseChangeLog:
                   name: claimtext
                   type: text
             file: db/changelog/claims.csv
-            tableName: policy
+            tableName: claim
             separator: ;
             usePreparedStatements: true

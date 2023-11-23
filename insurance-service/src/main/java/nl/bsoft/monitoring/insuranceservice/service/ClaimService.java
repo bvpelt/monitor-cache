@@ -5,13 +5,13 @@ import nl.bsoft.monitoring.insuranceservice.domain.Claim;
 import java.util.List;
 
 public interface ClaimService {
-    public List<Claim> getAll();
+    List<Claim> getAll();
 
-    public Claim add(Claim claim);
+    Claim add(Claim claim);
 
-    public Claim update(Claim claim);
+    Claim update(Claim claim);
 
-    public void delete(long id);
+    void delete(long id);
 
-    public Claim getClaimById(long id);
+    Claim getClaimById(long id);
 }

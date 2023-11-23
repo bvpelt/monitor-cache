@@ -3,12 +3,9 @@ package nl.bsoft.monitoring.insuranceservice.config;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -21,11 +18,9 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-
 import redis.clients.jedis.Jedis;
 
 import java.io.Serializable;
-import java.time.Duration;
 
 @Slf4j
 @Configuration
@@ -43,8 +38,10 @@ public class RedisConfig {
     @Value("${nl.bsoft.monitortest.customerservice.customerCacheTime}")
     private final long customerCacheTime = 1;
 
+    /*
     @Autowired
     private CacheManager cacheManager;
+*/
 
     @Value("${spring.data.redis.host}")
     private String redisHost;

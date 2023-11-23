@@ -1,4 +1,4 @@
-GET http://localhost:8090/policy
+POST http://localhost:8090/policy
 Content-Type: application/json
 
 {

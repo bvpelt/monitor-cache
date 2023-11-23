@@ -32,7 +32,9 @@ public class PolicyServiceImpl implements PolicyService {
     @Override
     public Policy add(Policy policy) {
         waitSomeTime(1000,"Add");
-        return this.policyRepository.save(policy);
+        Policy rp = this.policyRepository.save(policy);
+        log.info("Added policy {}", rp.toString());
+        return rp;
     }
 
     @CacheEvict(cacheNames = "policies", allEntries = true)

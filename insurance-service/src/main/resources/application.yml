@@ -1,3 +1,4 @@
+
 logging:
   pattern:
     level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
@@ -48,6 +49,11 @@ server:
 spring:
   application:
     name: insurance-service
+  cache:
+    type: redis
+    redis:
+      time-to-live: 30
+      cache-null-values: false
   data:
     redis:
       host: localhost
@@ -70,9 +76,6 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
     deserialization:
       unwrap-root-value: false
-  liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.yaml
-    enabled: true
   jpa:
     database: postgresql
     properties:
@@ -83,12 +86,20 @@ spring:
       ddl-auto: none
     show-sql: true
     open-in-view: false
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    enabled: true
 
-  cache:
-    type: redis
-    redis:
-      time-to-live: 30
-      cache-null-values: false
+springdoc:
+  swagger-ui:
+    url: /openapi.yaml
+    disable-swagger-default-url: true
+    use-root-path: true
+    groups-order: DESC
+    operations-sorter: method
+    display-request-duration: true
+    layout: BaseLayout
+    deep-linking: true
 
 tracing:
   url: http://localhost:4318/v1/traces

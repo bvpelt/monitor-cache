@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: insurance-service-1
-      author: bart
+      author: bart van pelt
       changes:
         - createTable:
             tableName: policy
@@ -18,7 +18,7 @@ databaseChangeLog:
                   type: text
   - changeSet:
       id: insurance-service-2
-      author: bart
+      author: bart van pelt
       changes:
         - createTable:
             tableName: claim

@@ -2,24 +2,26 @@ databaseChangeLog:
   -  changeSet:
      id:  policy-sequence
      author: bart van pelt
+     runWith: psql
      changes:
-       - sql:
-            dbms:  'postgresql'
-            endDelimiter:  \n
-            splitStatements:  true
-            sql:  update policy_id_seq set last_value = (select max(id) from policy);
-            stripComments:  true
-            comment:  Set sequence to last known value
+        - sql:
+           dbms:  'postgresql'
+           endDelimiter:  \n
+           splitStatements:  true
+           sql:  update policy_id_seq set last_value = (select max(id) from policy);
+           stripComments:  true
+           comment:  Set sequence to last known value
 
   -  changeSet:
      id:  claim-sequence
      author: bart van pelt
+     runWith: psql
      changes:
        - sql:
-            dbms:  'postgresql'
-            endDelimiter:  \n
-            splitStatements:  true
-            sql:  update claim_id_seq set last_value = (select max(id) from claim);
-            stripComments:  true
-            comment:  Set sequence to last known value
+          dbms:  'postgresql'
+          endDelimiter:  \n
+          splitStatements:  true
+          sql:  update claim_id_seq set last_value = (select max(id) from claim);
+          stripComments:  true
+          comment:  Set sequence to last known value
 

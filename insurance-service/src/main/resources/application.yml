@@ -70,6 +70,13 @@ spring:
     url: 'jdbc:postgresql://localhost/monitor'
     username: testuser
     password: 12345
+  flyway:
+    enabled: true
+    url: 'jdbc:postgresql://localhost/monitor'
+    user: testuser
+    password: 12345
+    validateMigrationNaming: true
+    locations: classpath:db/migration
   jackson:
     serialization:
       fail-on-empty-beans: false
@@ -86,9 +93,9 @@ spring:
       ddl-auto: none
     show-sql: true
     open-in-view: false
-  liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.yaml
-    enabled: true
+#  liquibase:
+#    change-log: classpath:/db/changelog/db.changelog-master.yaml
+#    enabled: false
 
 springdoc:
   swagger-ui:

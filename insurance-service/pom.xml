@@ -15,7 +15,6 @@
     <description>insurance-service</description>
 
     <properties>
-        <java.version>17</java.version>
         <embedded.redis.version>0.7.3</embedded.redis.version>
     </properties>
 
@@ -24,7 +23,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.6</version>
             </plugin>
         </plugins>
     </reporting>
@@ -86,16 +84,10 @@
         </dependency>
 
         <!-- database -->
-        <!--
-             <dependency>
-                 <groupId>org.liquibase</groupId>
-                 <artifactId>liquibase-core</artifactId>
-             </dependency>
-          -->
-             <dependency>
-                 <groupId>org.flywaydb</groupId>
-                 <artifactId>flyway-core</artifactId>
-             </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -104,33 +96,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.swagger.parser.v3</groupId>
-            <artifactId>swagger-parser</artifactId>
-            <version>2.1.18</version>
-        </dependency>
-        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.2.0</version>
         </dependency>
-        <!-- Swagger
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.swagger.parser.v3</groupId>
-            <artifactId>swagger-parser</artifactId>
-            <version>2.1.15</version>
-        </dependency>
-        -->
 
         <!-- Testing -->
         <dependency>
@@ -138,7 +106,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
 
         <!-- Embedded Redis server -->
         <dependency>
@@ -163,52 +130,8 @@
     </dependencies>
 
     <build>
-        <!--
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <configuration>
-                        <usedDependencies>
-                            <dependency>org.springdoc:springdoc-openapi-starter-webmvc-ui</dependency>
-                        </usedDependencies>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <phase>install</phase>
-                            <goals>
-                                <goal>copy-dependencies</goal>
-                            </goals>
-                            <configuration>
-                                <outputDirectory>./target/lib</outputDirectory>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-        -->
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M11</version>
-                <configuration>
-                    <locales>default</locales>
-                </configuration>
-            </plugin>
+
         </plugins>
     </build>
 

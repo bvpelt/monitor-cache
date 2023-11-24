@@ -76,3 +76,6 @@ The Insurance Service project is a demo application illustrating the implementat
 OpenTelemetry in Spring Boot 3.1 with Java 17. It serves as a valuable learning resource for developers interested in
 understanding distributed tracing in microservice-based applications. If you have any questions or suggestions, feel
 free to contribute or reach out to the project maintainers. Happy tracing!
+
+# Swagger
+See http://localhost:8090/swagger-ui/index.html

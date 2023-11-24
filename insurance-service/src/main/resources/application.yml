@@ -93,20 +93,17 @@ spring:
       ddl-auto: none
     show-sql: true
     open-in-view: false
-#  liquibase:
-#    change-log: classpath:/db/changelog/db.changelog-master.yaml
-#    enabled: false
 
-springdoc:
-  swagger-ui:
-    url: /openapi.yaml
-    disable-swagger-default-url: true
-    use-root-path: true
-    groups-order: DESC
-    operations-sorter: method
-    display-request-duration: true
-    layout: BaseLayout
-    deep-linking: true
+#springdoc:
+#  swagger-ui:
+#    url: /openapi.yaml
+#    disable-swagger-default-url: true
+#    use-root-path: true
+#    groups-order: DESC
+#    operations-sorter: method
+#    display-request-duration: true
+#    layout: BaseLayout
+#    deep-linking: true
 
 tracing:
   url: http://localhost:4318/v1/traces

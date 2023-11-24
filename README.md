@@ -30,3 +30,4 @@ See
 - https://www.baeldung.com/spring-boot-redis-cache
 - https://www.baeldung.com/spring-data-redis-tutorial
 - https://medium.com/echohub/spring-boot-redis-postgresql-caching-58ca352280a3 
+- maven dependencies https://mvnrepository.com/ 

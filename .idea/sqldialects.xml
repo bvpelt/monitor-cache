@@ -2,6 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/insurance-service/src/main/resources/db/migration/V1_0__create_policy_table.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/insurance-service/src/main/resources/db/migration/klad.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/insurance-service/src/main/resources/db/migration/V1_3__load_claim_table.sql" dialect="PostgreSQL" />
   </component>
 </project>

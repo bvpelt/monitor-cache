@@ -1,8 +1,8 @@
 package nl.bsoft.monitortest.customerservice.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.bsoft.monitoring.insuranceservice.domain.Claim;
-import nl.bsoft.monitoring.insuranceservice.domain.Policy;
+import nl.bsoft.monitor.library.domain.Claim;
+import nl.bsoft.monitor.library.domain.Policy;
 import nl.bsoft.monitortest.customerservice.model.Customer;
 import nl.bsoft.monitortest.customerservice.model.CustomerDTO;
 import nl.bsoft.monitortest.customerservice.service.CustomerService;
@@ -55,7 +55,7 @@ public class CustomerController {
 
         Map<String, Integer> policyParams = Collections.singletonMap("id", customerDTO.getPolicyId());
         Policy policy = restTemplate.getForObject(BASE_INSURANCE_URL + "policy?id={id}", Policy.class, policyParams);
-        log.info("Recevied for customer: {} policy: {}",  customerId, policy.toString());
+        log.info("Recevied for customer: {} policy: {}", customerId, policy.toString());
 
         Map<String, Integer> claimParams = Collections.singletonMap("id", customerDTO.getPolicyId());
         Claim claim = restTemplate.getForObject(BASE_INSURANCE_URL + "claim?id={id}", Claim.class, claimParams);

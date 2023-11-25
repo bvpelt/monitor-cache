@@ -1,6 +1,6 @@
-package nl.bsoft.monitoring.insuranceservice.repositories;
+package nl.bsoft.monitor.library.repositories;
 
-import nl.bsoft.monitoring.insuranceservice.domain.Policy;
+import nl.bsoft.monitor.library.domain.Policy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

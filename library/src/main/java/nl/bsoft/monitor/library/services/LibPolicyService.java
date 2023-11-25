@@ -1,10 +1,10 @@
-package nl.bsoft.monitoring.insuranceservice.service;
+package nl.bsoft.monitor.library.services;
 
 import nl.bsoft.monitor.library.domain.Policy;
 
 import java.util.List;
 
-public interface PolicyService {
+public interface LibPolicyService {
 
     List<Policy> getAll();
 

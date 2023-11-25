@@ -2,9 +2,10 @@
 -- Name: claim; Type: TABLE; Schema: public; Owner: testuser
 --
 
-CREATE TABLE public.claim (
-                              id integer NOT NULL,
-                              claimtext text
+CREATE TABLE public.claim
+(
+    id        integer NOT NULL,
+    claimtext text
 );
 
 

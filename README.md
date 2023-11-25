@@ -26,8 +26,17 @@ open http://localhost:16686/search
 | jaeger            | search traces               | http://localhost:16686/search  |
 
 # Redis cache
-See 
+
+See
+
 - https://www.baeldung.com/spring-boot-redis-cache
 - https://www.baeldung.com/spring-data-redis-tutorial
-- https://medium.com/echohub/spring-boot-redis-postgresql-caching-58ca352280a3 
-- maven dependencies https://mvnrepository.com/ 
+- https://medium.com/echohub/spring-boot-redis-postgresql-caching-58ca352280a3
+- maven dependencies https://mvnrepository.com/
+
+# Maven dependency conflicts
+
+See
+
+- https://dzone.com/articles/solving-dependency-conflicts-in-maven
+- 

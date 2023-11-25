@@ -11,7 +11,7 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@Table(name="customer")
+@Table(name = "customer")
 public class CustomerDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 

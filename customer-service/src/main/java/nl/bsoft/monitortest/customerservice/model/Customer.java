@@ -1,17 +1,13 @@
 package nl.bsoft.monitortest.customerservice.model;
 
 
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.Serializable;
-import java.util.Objects;
 
 
 @Getter
 @Setter
-public class Customer  {
+public class Customer {
     private Integer customerId;
     private String policy;
     private String claim;

@@ -1,8 +1,8 @@
-package nl.bsoft.monitoring.insuranceservice.service;
+package nl.bsoft.monitor.library.services;
 
 import lombok.extern.slf4j.Slf4j;
 import nl.bsoft.monitor.library.domain.Claim;
-import nl.bsoft.monitor.library.services.LibClaimService;
+import nl.bsoft.monitor.library.repositories.ClaimRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
@@ -16,57 +16,41 @@ import java.util.Optional;
 @Slf4j
 @Service
 @CacheConfig(cacheNames = "claimCache")
-public class ClaimServiceImpl implements ClaimService {
+public class LibClaimServiceImpl implements LibClaimService {
 
     @Autowired
-    private LibClaimService libClaimService;
+    private ClaimRepository claimRepository;
 
     @Cacheable(cacheNames = "claims")
     @Override
     public List<Claim> getAll() {
-        waitSomeTime("getAll");
-        return this.libClaimService.getAll();
+        return this.claimRepository.findAll();
     }
 
-    @CacheEvict(cacheNames = "claims", allEntries = true)
     @Override
     public Claim add(Claim claim) {
-        return this.libClaimService.add(claim);
+        return this.claimRepository.save(claim);
     }
 
-    @CacheEvict(cacheNames = "claims", allEntries = true)
     @Override
     public Claim update(Claim claim) {
-        Optional<Claim> optClaim = Optional.ofNullable(this.libClaimService.getClaimById(claim.getId()));
+        Optional<Claim> optClaim = this.claimRepository.findById(claim.getId());
         if (!optClaim.isPresent())
             return null;
 
         Claim repClaim = optClaim.get();
         repClaim.setClaimText(claim.getClaimText());
-        return this.libClaimService.add(repClaim);
+        return this.claimRepository.save(repClaim);
     }
 
-    @Caching(evict = {@CacheEvict(cacheNames = "claim", key = "#id"),
-            @CacheEvict(cacheNames = "claims", allEntries = true)})
     @Override
     public void delete(long id) {
-        this.libClaimService.delete(id); }
-
-    @Cacheable(cacheNames = "claim", key = "#id", unless = "#result == null")
-    @Override
-    public Claim getClaimById(long id) {
-        waitSomeTime("getClaimById");
-        return this.libClaimService.getClaimById(id);
+        this.claimRepository.deleteById(id);
     }
 
-    private void waitSomeTime(String stage) {
-        log.info("Long Wait Begin for {}", stage);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        log.info("Long Wait End");
+    @Override
+    public Claim getClaimById(long id) {
+        return this.claimRepository.findById(id).orElse(null);
     }
 
     /*

@@ -1,8 +1,8 @@
 package nl.bsoft.monitoring.insuranceservice.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.bsoft.monitoring.insuranceservice.domain.Claim;
-import nl.bsoft.monitoring.insuranceservice.service.ClaimService;
+import nl.bsoft.monitor.library.domain.Claim;
+import nl.bsoft.monitor.library.services.LibClaimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +15,12 @@ import java.util.List;
 public class ClaimController {
 
 
-    private final ClaimService claimService;
+    private final LibClaimService claimService;
     @Value("${spring.application.name}")
     private String applicationName;
 
     @Autowired
-    ClaimController(ClaimService claimService) {
+    ClaimController(LibClaimService claimService) {
         this.claimService = claimService;
     }
 

@@ -1,4 +1,4 @@
-package nl.bsoft.monitoring.insuranceservice.domain;
+package nl.bsoft.monitor.library.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

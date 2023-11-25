@@ -1,0 +1,31 @@
+
+spring:
+  application:
+    name: library
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: 'jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE'
+    username: sa
+    password:
+  flyway:
+    enabled: true
+    url: 'jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE'
+    username: sa
+    password:
+    validateMigrationNaming: true
+    locations: classpath:db/migration
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+      FAIL_ON_EMPTY_BEANS: false
+    deserialization:
+      unwrap-root-value: false
+  jpa:
+    database: h2
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false

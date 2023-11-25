@@ -3,8 +3,8 @@ package nl.bsoft.monitortest.customerservice.service;
 import lombok.AllArgsConstructor;
 import nl.bsoft.monitortest.customerservice.model.CustomerDTO;
 import nl.bsoft.monitortest.customerservice.repositories.CustomerRepository;
-import org.springframework.stereotype.Service;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor

@@ -65,44 +65,33 @@ spring:
           max-idle: 8
           min-idle: 8
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: 'jdbc:postgresql://localhost/monitor'
-    username: testuser
-    password: 12345
+    driver-class-name: org.h2.Driver
+    url: 'jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE'
+    username: sa
+    password:
   flyway:
-   enabled: false
-#   url: 'jdbc:postgresql://localhost/monitor'
-#   user: testuser
-#   password: 12345
-#   validateMigrationNaming: true
-#   locations: classpath:db/migration
+    enabled: false
+    url: 'jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE'
+    user: sa
+    password:
+    validateMigrationNaming: true
+    locations: classpath:db/migration
   jackson:
     serialization:
       fail-on-empty-beans: false
       FAIL_ON_EMPTY_BEANS: false
     deserialization:
       unwrap-root-value: false
-#  jpa:
-#   database: postgresql
-#   properties:
-#     hibernate:
-#       format_sql: true
-#       dialect: org.hibernate.dialect.PostgreSQLDialect
-#   hibernate:
-#     ddl-auto: none
-#   show-sql: true
-   open-in-view: false
-
-#springdoc:
-#  swagger-ui:
-#    url: /openapi.yaml
-#    disable-swagger-default-url: true
-#    use-root-path: true
-#    groups-order: DESC
-#    operations-sorter: method
-#    display-request-duration: true
-#    layout: BaseLayout
-#    deep-linking: true
+# jpa:
+#    database: h2
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        dialect: org.hibernate.dialect.H2Dialect
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+    open-in-view: false
 
 tracing:
   url: http://localhost:4318/v1/traces

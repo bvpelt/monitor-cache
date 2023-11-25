@@ -1,0 +1,9 @@
+module nl.bsoft.monitor.library {
+    requires jakarta.persistence;
+    requires lombok;
+    requires spring.boot;
+    requires spring.data.jpa;
+    requires spring.data.commons;
+    requires spring.boot.autoconfigure;
+    exports nl.bsoft.monitor.library;
+}

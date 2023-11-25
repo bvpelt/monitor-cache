@@ -1,6 +1,5 @@
 package nl.bsoft.monitoring.insuranceservice.config;
 
-
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,6 +20,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import redis.clients.jedis.Jedis;
 
 import java.io.Serializable;
+
 
 @Slf4j
 @Configuration

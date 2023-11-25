@@ -1,4 +1,4 @@
-package nl.bsoft.monitoring.insuranceservice.service;
+package nl.bsoft.monitor.library.services;
 
 import lombok.extern.slf4j.Slf4j;
 import nl.bsoft.monitor.library.domain.Policy;
@@ -16,7 +16,7 @@ import java.util.Optional;
 @Slf4j
 @Service
 @CacheConfig(cacheNames = "policyCache")
-public class PolicyServiceImpl implements PolicyService {
+public class LibPolicyServiceImpl implements LibPolicyService {
 
     @Autowired
     private PolicyRepository policyRepository;

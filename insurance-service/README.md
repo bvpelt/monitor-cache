@@ -78,4 +78,5 @@ understanding distributed tracing in microservice-based applications. If you hav
 free to contribute or reach out to the project maintainers. Happy tracing!
 
 # Swagger
+
 See http://localhost:8090/swagger-ui/index.html

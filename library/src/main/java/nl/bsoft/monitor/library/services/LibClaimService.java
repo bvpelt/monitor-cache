@@ -1,10 +1,10 @@
-package nl.bsoft.monitoring.insuranceservice.service;
+package nl.bsoft.monitor.library.services;
 
 import nl.bsoft.monitor.library.domain.Claim;
 
 import java.util.List;
 
-public interface ClaimService {
+public interface LibClaimService {
     List<Claim> getAll();
 
     Claim add(Claim claim);

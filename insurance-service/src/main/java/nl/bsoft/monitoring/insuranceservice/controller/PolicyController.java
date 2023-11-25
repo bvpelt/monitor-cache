@@ -1,8 +1,8 @@
 package nl.bsoft.monitoring.insuranceservice.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.bsoft.monitoring.insuranceservice.domain.Policy;
-import nl.bsoft.monitoring.insuranceservice.service.PolicyService;
+import nl.bsoft.monitor.library.domain.Policy;
+import nl.bsoft.monitor.library.services.LibPolicyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -14,12 +14,12 @@ import java.util.List;
 @RequestMapping("/")
 public class PolicyController {
 
-    private final PolicyService policyService;
+    private final LibPolicyService policyService;
     @Value("${spring.application.name}")
     private String applicationName;
 
     @Autowired
-    PolicyController(PolicyService policyService) {
+    PolicyController(LibPolicyService policyService) {
         this.policyService = policyService;
     }
 

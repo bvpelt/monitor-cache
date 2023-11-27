@@ -5,9 +5,6 @@ import nl.bsoft.monitor.library.domain.Claim;
 import nl.bsoft.monitor.library.repositories.ClaimRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
-import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.Caching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +18,6 @@ public class LibClaimServiceImpl implements LibClaimService {
     @Autowired
     private ClaimRepository claimRepository;
 
-    @Cacheable(cacheNames = "claims")
     @Override
     public List<Claim> getAll() {
         return this.claimRepository.findAll();
@@ -52,33 +48,5 @@ public class LibClaimServiceImpl implements LibClaimService {
     public Claim getClaimById(long id) {
         return this.claimRepository.findById(id).orElse(null);
     }
-
-    /*
-    private static final Map<Integer, String> claimMap = new HashMap<>();
-
-    static {
-        claimMap.put(111, "Claim 111");
-        claimMap.put(222, "Claim 222");
-        claimMap.put(333, "Claim 333");
-        claimMap.put(444, "Claim 444");
-        claimMap.put(555, "Claim 555");
-        claimMap.put(666, "Claim 666");
-        claimMap.put(777, "Claim 777");
-    }
-
-    public String findClaim(Integer customerId) {
-
-        //Adding sleep
-        int sleepTime = new Random().nextInt(500);// -- Uncomment the line if you want to add random delay
-
-        try {
-            TimeUnit.MILLISECONDS.sleep(sleepTime);
-        } catch (InterruptedException e) {
-            log.error(e.getMessage());
-        }
-
-        return claimMap.get(customerId % claimMap.values().size());
-    }
-    */
 
 }

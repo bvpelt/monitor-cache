@@ -4,7 +4,7 @@
 
 CREATE TABLE public.claim
 (
-    id        integer NOT NULL,
+    id        bigint NOT NULL,
     claimtext text
 );
 

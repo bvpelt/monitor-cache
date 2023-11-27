@@ -82,27 +82,19 @@ spring:
       FAIL_ON_EMPTY_BEANS: false
     deserialization:
       unwrap-root-value: false
-#  jpa:
-#   database: postgresql
-#   properties:
-#     hibernate:
-#       format_sql: true
-#       dialect: org.hibernate.dialect.PostgreSQLDialect
-#   hibernate:
-#     ddl-auto: none
-#   show-sql: true
-   open-in-view: false
+  open-in-view: false
 
-#springdoc:
-#  swagger-ui:
+springdoc:
+  swagger-ui:
 #    url: /openapi.yaml
 #    disable-swagger-default-url: true
 #    use-root-path: true
-#    groups-order: DESC
-#    operations-sorter: method
-#    display-request-duration: true
-#    layout: BaseLayout
-#    deep-linking: true
+    groups-order: DESC
+    operations-sorter: method
+    display-request-duration: true
+    layout: BaseLayout
+    deep-linking: true
+
 
 tracing:
   url: http://localhost:4318/v1/traces

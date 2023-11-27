@@ -1,20 +1,14 @@
 package nl.bsoft.monitor.library;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 import nl.bsoft.monitor.library.domain.Claim;
 import nl.bsoft.monitor.library.domain.Policy;
 import nl.bsoft.monitor.library.repositories.ClaimRepository;
 import nl.bsoft.monitor.library.repositories.PolicyRepository;
 import nl.bsoft.monitor.library.services.LibClaimService;
 import nl.bsoft.monitor.library.services.LibPolicyService;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.cache.CacheManager;
-
 
 import java.util.Optional;
 

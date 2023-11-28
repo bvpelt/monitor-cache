@@ -29,8 +29,12 @@
         <!-- modules -->
         <dependency>
             <groupId>nl.bsoft.monitor</groupId>
+            <artifactId>library</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>nl.bsoft.monitor</groupId>
             <artifactId>insurance-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -74,11 +78,6 @@
         </dependency>
 
         <!-- Testing -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <!-- Embedded Redis server -->
         <dependency>

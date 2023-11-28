@@ -8,14 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Customer {
-    private Integer customerId;
+    private Long customerId;
     private String policy;
     private String claim;
 
     public Customer() {
     }
 
-    public Customer(Integer customerId, String policy, String claim) {
+    public Customer(Long customerId, String policy, String claim) {
         this.customerId = customerId;
         this.policy = policy;
         this.claim = claim;

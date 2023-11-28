@@ -56,9 +56,9 @@ spring:
     url: 'jdbc:postgresql://localhost/monitor'
     username: testuser
     password: 12345
-  liquibase:
-    change-log: classpath:/db/changelog/db.changelog-master.yaml
-    enabled: true
+#  liquibase:
+#    change-log: classpath:/db/changelog/db.changelog-master.yaml
+#    enabled: true
   jpa:
     database: postgresql
     properties:

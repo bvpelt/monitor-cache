@@ -48,8 +48,10 @@ public class CustomerController {
     Get the policy and claim for a customer
      */
     @GetMapping("/customer")
-    public ResponseEntity info(@RequestParam("id") Integer customerId) {
+    public ResponseEntity info(@RequestParam("id") Long customerId) {
 
+        Customer customer = this.customerService.getCustomerForId(customerId);
+        /*
         log.info("Incoming request at {} for request customer/info for customer: {} ", applicationName, customerId);
         CustomerDTO customerDTO = this.customerService.getCustomerDTO(customerId);
 
@@ -61,7 +63,7 @@ public class CustomerController {
         Claim claim = restTemplate.getForObject(BASE_INSURANCE_URL + "claim?id={id}", Claim.class, claimParams);
         log.info("Recevied for customer: {} claim: {}", customerId, claim.toString());
         Customer customer = new Customer(customerId, policy.getPolicyText(), claim.getClaimText());
-
+*/
         String url = BASE_INFORM_URL + customerId.toString();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);

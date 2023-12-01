@@ -39,4 +39,5 @@ See
 See
 
 - https://dzone.com/articles/solving-dependency-conflicts-in-maven
-- 
+- https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface
+

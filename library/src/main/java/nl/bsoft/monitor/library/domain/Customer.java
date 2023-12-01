@@ -20,25 +20,28 @@ public class Customer implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long customerId;
-    private Long policyId;
-    private Long claimId;
+    @Column(name="customerid")
+    private Long customerid;
+    @Column(name="policyid")
+    private Long policyid;
+    @Column(name="claimid")
+    private Long claimid;
 
     public Customer() {
     }
 
-    public Customer(Long customerId, Long policyId, Long claimId) {
-        this.customerId = customerId;
-        this.policyId = policyId;
-        this.claimId = claimId;
+    public Customer(Long customerid, Long policyid, Long claimid) {
+        this.customerid = customerid;
+        this.policyid = policyid;
+        this.claimid = claimid;
     }
 
     @Override
     public String toString() {
         return "Customer{" +
-                "customerId=" + customerId +
-                ", policyId='" + policyId + '\'' +
-                ", claimId='" + claimId + '\'' +
+                "customerId=" + customerid +
+                ", policyId='" + policyid + '\'' +
+                ", claimId='" + claimid + '\'' +
                 '}';
     }
 
@@ -47,11 +50,11 @@ public class Customer implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return id.equals(customer.id) && Objects.equals(customerId, customer.customerId) && Objects.equals(policyId, customer.policyId) && Objects.equals(claimId, customer.claimId);
+        return id.equals(customer.id) && Objects.equals(customerid, customer.customerid) && Objects.equals(policyid, customer.policyid) && Objects.equals(claimid, customer.claimid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, customerId, policyId, claimId);
+        return Objects.hash(id, customerid, policyid, claimid);
     }
 }

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.client.RestTemplate;
 
 @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-@ComponentScan({"nl.bsoft.monitor.library"})
+@ComponentScan({"nl.bsoft.monitor.library", "nl.bsoft.monitortest.customerservice"})
 @SpringBootApplication
 public class CustomerServiceApplication {
 

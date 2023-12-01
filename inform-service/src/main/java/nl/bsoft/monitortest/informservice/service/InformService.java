@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class InformService {
 
-    public String informClient(Integer customerId, String message) {
+    public String informClient(Long customerId, String message) {
         //Adding sleep
         int sleepTime = new Random().nextInt(500);// -- Uncomment the line if you want to add random delay
 

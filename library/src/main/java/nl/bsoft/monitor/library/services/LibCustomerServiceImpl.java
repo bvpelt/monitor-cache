@@ -35,9 +35,9 @@ public class LibCustomerServiceImpl implements LibCustomerService {
             return null;
 
         Customer repCustomer = optCustomer.get();
-        repCustomer.setCustomerId(customer.getCustomerId());
-        repCustomer.setClaimId(customer.getClaimId());
-        repCustomer.setPolicyId(customer.getPolicyId());
+        repCustomer.setCustomerid(customer.getCustomerid());
+        repCustomer.setClaimid(customer.getClaimid());
+        repCustomer.setPolicyid(customer.getPolicyid());
         return this.customerRepository.save(repCustomer);
     }
 

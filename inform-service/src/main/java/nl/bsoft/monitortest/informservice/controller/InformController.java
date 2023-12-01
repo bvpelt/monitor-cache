@@ -22,7 +22,7 @@ public class InformController {
     }
 
     @PostMapping("/inform/{id}")
-    public String informClient(@PathVariable("id") Integer customerId, @RequestBody String message) {
+    public String informClient(@PathVariable("id") Long customerId, @RequestBody String message) {
         log.info("Inform customer: {} with message: {}", customerId, message);
         return informService.informClient(customerId, message);
     }

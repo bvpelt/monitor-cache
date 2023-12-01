@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 //import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
-@ComponentScan({"nl.bsoft.monitor.library"})
+@ComponentScan({"nl.bsoft.monitor.library", "nl.bsoft.monitoring.insuranceservice"})
 //@EnableSwagger2
 @SpringBootApplication
 public class InsuranceServiceApplication {

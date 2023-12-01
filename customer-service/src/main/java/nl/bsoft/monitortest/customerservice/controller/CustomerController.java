@@ -1,10 +1,7 @@
 package nl.bsoft.monitortest.customerservice.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import nl.bsoft.monitor.library.domain.Claim;
-import nl.bsoft.monitor.library.domain.Policy;
 import nl.bsoft.monitortest.customerservice.model.Customer;
-import nl.bsoft.monitortest.customerservice.model.CustomerDTO;
 import nl.bsoft.monitortest.customerservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,16 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
-import java.util.Map;
-
 @Slf4j
 @RestController
 @RequestMapping("/")
 public class CustomerController {
 
-    @Value("${nl.bsoft.insuranceurl}")
-    private String BASE_INSURANCE_URL;
+//    @Value("${nl.bsoft.insuranceurl}")
+//    private String BASE_INSURANCE_URL;
 
     @Value("${nl.bsoft.informurl}")
     private String BASE_INFORM_URL;
@@ -38,17 +32,19 @@ public class CustomerController {
     private RestTemplate restTemplate;
     private CustomerService customerService;
 
+
     @Autowired
     public CustomerController(RestTemplate rest, CustomerService customerService) {
         this.restTemplate = rest;
         this.customerService = customerService;
     }
 
+
     /*
     Get the policy and claim for a customer
      */
     @GetMapping("/customer")
-    public ResponseEntity info(@RequestParam("id") Long customerId) {
+    public ResponseEntity infoid(@RequestParam("id") Long customerId) {
 
         Customer customer = this.customerService.getCustomerForId(customerId);
         /*

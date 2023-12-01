@@ -33,7 +33,12 @@
             <dependency>
                 <groupId>nl.bsoft.monitor</groupId>
                 <artifactId>library</artifactId>
-                <version>${project.parent.version}</version>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>nl.bsoft.monitor</groupId>
+                <artifactId>insurance-service</artifactId>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.flywaydb</groupId>
@@ -51,6 +56,11 @@
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc-openapi-starter-webmvc-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.14</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -89,14 +99,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>com.vaadin.external.google</groupId>
                     <artifactId>android-json</artifactId>
-                    <!-- com.vaadin.external.google:android-json:jar:0.0.20131108.vaadin1:test -->
                 </exclusion>
             </exclusions>
-            <scope>test</scope>
         </dependency>
 
 

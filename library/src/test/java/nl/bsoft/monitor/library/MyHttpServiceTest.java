@@ -6,12 +6,19 @@ import nl.bsoft.monitor.library.domain.Policy;
 import nl.bsoft.monitor.library.services.MyHttpService;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.Assert;
 
 import java.time.Duration;
 
 @Slf4j
+
 public class MyHttpServiceTest {
+
 
 
     @Test

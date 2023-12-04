@@ -1,45 +1,34 @@
 package nl.bsoft.monitortest.customerservice.service;
 
-import io.netty.channel.ChannelOption;
-import io.netty.handler.timeout.ReadTimeoutHandler;
-import io.netty.handler.timeout.WriteTimeoutHandler;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nl.bsoft.monitor.library.domain.Claim;
 import nl.bsoft.monitor.library.domain.Policy;
 import nl.bsoft.monitor.library.services.LibCustomerService;
+import nl.bsoft.monitor.library.services.MyHttpService;
 import nl.bsoft.monitortest.customerservice.controller.MyApiException;
 import nl.bsoft.monitortest.customerservice.controller.NotFoundException;
 import nl.bsoft.monitortest.customerservice.model.Customer;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
-import org.springframework.http.client.reactive.ReactorClientHttpConnector;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.reactive.function.client.WebClientResponseException;
-import reactor.core.publisher.Mono;
-import reactor.netty.http.client.HttpClient;
 
 
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.time.ZonedDateTime;
-import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
 @AllArgsConstructor
 public class CustomerService {
 
+    private final Long timeOutValue = 5L;
     @Value("${nl.bsoft.insuranceurl}")
     private String BASE_INSURANCE_URL;
-
     @Value("${nl.bsoft.informurl}")
     private String BASE_INFORM_URL;
-
-    private final Long timeOutValue = 5L;
     /*
     private final CustomerRepository customerRepository;
 
@@ -56,13 +45,15 @@ public class CustomerService {
      */
     private RestTemplate restTemplate;
     private LibCustomerService libCustomerService;
-    private WebClient webclient;
+    private MyHttpService httpClient;
 
     @Autowired
-    public CustomerService(RestTemplate restTemplate, WebClient.Builder webClientBuilder, LibCustomerService libCustomerService) {
+    public CustomerService(RestTemplate restTemplate, MyHttpService httpClient, LibCustomerService libCustomerService) {
         this.restTemplate = restTemplate;
         this.libCustomerService = libCustomerService;
+        this.httpClient = httpClient;
 
+        /*
         // create webclient
         HttpClient httpClient = HttpClient.create()
                 .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 5000)  // connection timeout 5000ms
@@ -76,8 +67,9 @@ public class CustomerService {
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .clientConnector(new ReactorClientHttpConnector(httpClient))
                 .build();
-    }
 
+         */
+    }
 
 
     public Customer getCustomerForId(Long id) {
@@ -155,10 +147,11 @@ public class CustomerService {
         return customer;
     }
 
-    private Policy getPolicy(nl.bsoft.monitor.library.domain.Customer libCustomer ) {
+    private Policy getPolicy(nl.bsoft.monitor.library.domain.Customer libCustomer) {
 
         // create webclient instance -> in constructor
         // make request
+        /*
         WebClient.UriSpec<WebClient.RequestBodySpec> uriSpec = this.webclient.method(HttpMethod.GET);
         WebClient.RequestBodySpec bodySpec = uriSpec.uri("/policy/{id}", libCustomer.getPolicyid());
 
@@ -184,15 +177,22 @@ public class CustomerService {
                     }
 
                 }).block();
+*/
+        Duration duration = Duration.ofMillis(5000);
+        String uriString = "http://localhost:8090/policy/" + libCustomer.getPolicyid().toString();
 
+        CloseableHttpClient closeableHttpClient = null;
+        Policy policy = httpClient.getResponse(uriString, duration, Policy.class);
 
+        return policy;
     }
 
 
-    private Claim getClaim(nl.bsoft.monitor.library.domain.Customer libCustomer ) {
+    private Claim getClaim(nl.bsoft.monitor.library.domain.Customer libCustomer) {
 
         // create webclient instance -> in constructor
         // make request
+        /*
         WebClient.UriSpec<WebClient.RequestBodySpec> uriSpec = this.webclient.method(HttpMethod.GET);
         WebClient.RequestBodySpec bodySpec = uriSpec.uri("/claim/{id}", libCustomer.getClaimid());
 
@@ -218,8 +218,16 @@ public class CustomerService {
                     }
 
                 }).block();
-    }
+         */
+        Duration duration = Duration.ofMillis(5000);
+        String uriString = "http://localhost:8090/claim/" + libCustomer.getClaimid().toString();
 
+        CloseableHttpClient closeableHttpClient = null;
+        Claim claim = httpClient.getResponse(uriString, duration, Claim.class);
+
+        return claim;
+    }
+/*
     private Throwable handleWebClientException(WebClientResponseException ex, String pathVariable) {
         if (ex.getStatusCode() == HttpStatus.NOT_FOUND) {
             return new NotFoundException("Resource not found for variable: " + pathVariable);
@@ -227,4 +235,6 @@ public class CustomerService {
             return new MyApiException("Error calling API", ex);
         }
     }
+
+ */
 }

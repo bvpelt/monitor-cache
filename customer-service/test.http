@@ -2,3 +2,31 @@ GET http://localhost:8085/customer?id=1
 Accept: application/json
 
 ###
+GET http://localhost:8085/customer?id=2
+Accept: application/json
+
+###
+GET http://localhost:8085/customer?id=3
+Accept: application/json
+
+###
+GET http://localhost:8085/customer?id=4
+Accept: application/json
+
+###
+GET http://localhost:8085/customer?id=5
+Accept: application/json
+
+###
+GET http://localhost:8085/customer?id=6
+Accept: application/json
+
+###
+GET http://localhost:8085/customer?id=7
+Accept: application/json
+
+###
+GET http://localhost:8085/customer?id=1
+Accept: application/json
+
+###

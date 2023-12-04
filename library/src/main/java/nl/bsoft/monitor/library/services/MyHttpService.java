@@ -1,6 +1,7 @@
 package nl.bsoft.monitor.library.services;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.Header;
 import org.apache.http.HeaderElement;
@@ -9,12 +10,16 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
 import java.time.Duration;
 
 @Slf4j
+@Service
 public class MyHttpService {
+
 
     public <T> T getResponse(String uriString, Duration requestDuration, Class<T> clazz) {
         CloseableHttpClient httpclient = HttpClients.createDefault();

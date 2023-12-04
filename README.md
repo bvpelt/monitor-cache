@@ -40,4 +40,5 @@ See
 
 - https://dzone.com/articles/solving-dependency-conflicts-in-maven
 - https://docs.spring.io/spring-framework/reference/integration/rest-clients.html#rest-http-interface
+- https://www.baeldung.com/apache-httpclient-vs-closeablehttpclient
 

@@ -1,6 +1,8 @@
 package nl.bsoft.monitor.library.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +31,12 @@ public class HttpClientConfig {
                     .connectTimeout(Duration.ofSeconds(DEFAULT_DURATION_REQUEST_SECONDS))
                     .version(HttpClient.Version.HTTP_1_1)
                     .build();
+
+    @Bean
+    public CloseableHttpClient getCloseableHttpClient() {
+        return HttpClients
+                .createDefault();
+    }
 
     @Bean
     public HttpClient getHttpClient() {
